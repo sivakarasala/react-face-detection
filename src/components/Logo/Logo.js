@@ -10,8 +10,8 @@ const Logo = () => {
         className="Tilt"
         options={{ max: 50 }}
         style={{
-          height: 150,
-          width: 150
+          height: 120,
+          width: 120
         }}
       >
         <div className="Tilt-inner" style={{ align: "center" }}>
@@ -19,7 +19,7 @@ const Logo = () => {
             style={{ paddingTop: "5px" }}
             name="trident"
             color="#96c93d"
-            size={120}
+            size={100}
           />
         </div>
       </Tilt>
@@ -32,6 +32,7 @@ export default Logo;
 const Container = styled.div`
   align-self: flex-start;
   margin-top: 0;
+  margin-bottom: 1em;
   justify-content: center;
   margin-left: 20px;
   .Tilt {
@@ -43,7 +44,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
   }
-  .Tilt-inner {
+  /* .Tilt-inner {
     transform: rotate(90deg);
-  }
+  } */
 `;

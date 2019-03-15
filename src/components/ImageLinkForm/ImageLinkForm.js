@@ -18,11 +18,15 @@ export default ImageLinkForm;
 const Container = styled.div`
   /* flex: 1; */
   align-self: center;
-
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
 `;
 const LocalCon = styled.div`
   display: flex;
+  width: 100%;
   padding: 2em;
   /* flex-direction: column; */
   justify-content: center;
@@ -34,12 +38,12 @@ const LocalCon = styled.div`
     width: 60%;
     padding: 0.4em;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 0.8em;
   }
   button {
     width: 30%;
     padding: 0.4em;
-    font-size: 1em;
+    font-size: 0.8em;
     border-radius: 5px;
     background-color: #00b09b;
     color: #fff;
@@ -50,7 +54,9 @@ const LocalCon = styled.div`
   }
   background: linear-gradient(to bottom, #f3f9a7 0%, #cac531 100%);
 `;
-const P = styled.p`
-  font-size: 1.2em;
+const P = styled.div`
+  font-size: 1em;
   color: #333;
+  justify-self: center;
+  margin: 0.5em;
 `;
