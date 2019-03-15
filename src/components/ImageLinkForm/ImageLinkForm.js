@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const ImageLinkForm = () => {
+const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
   return (
     <Container>
       <P>{"This magic trident will detect faces in your pictures. Try it"}</P>
       <LocalCon>
-        <input type="text" />
-        <button>Detect</button>
+        <input type="text" onChange={onInputChange} />
+        <button onClick={onButtonSubmit}>Detect</button>
       </LocalCon>
     </Container>
   );
@@ -23,6 +23,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 50%;
+  margin: 0.5em;
 `;
 const LocalCon = styled.div`
   display: flex;
