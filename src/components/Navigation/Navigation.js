@@ -1,12 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
-const Navigation = () => {
-  return (
-    <Nav>
-      <P>Sign Out</P>
-    </Nav>
-  );
+const Navigation = ({ onRouteChange, isSignedIn }) => {
+  if (isSignedIn) {
+    return (
+      <Nav>
+        <P onClick={() => onRouteChange("signout")}>Sign Out</P>
+      </Nav>
+    );
+  } else {
+    return (
+      <Nav>
+        <P onClick={() => onRouteChange("signin")}>Sign In</P>
+        <P onClick={() => onRouteChange("register")}>Register</P>
+      </Nav>
+    );
+  }
 };
 
 export default Navigation;

@@ -22,12 +22,12 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 100%;
   margin: 0.5em;
 `;
 const LocalCon = styled.div`
   display: flex;
-  width: 100%;
+  width: 50%;
   padding: 2em;
   /* flex-direction: column; */
   justify-content: center;

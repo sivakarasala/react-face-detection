@@ -5,7 +5,7 @@ const FaceRecognition = ({ imageUrl, box }) => {
   return (
     <Container>
       <ImgCon>
-        <img id="inputImage" alt="" src={imageUrl} width="100%" height="auto" />
+        <img id="inputImage" alt="" src={imageUrl} width="100%" height="50%" />
         <BoundingBox
           style={{
             top: box.topRow,
@@ -20,17 +20,17 @@ const FaceRecognition = ({ imageUrl, box }) => {
 };
 
 const Container = styled.div`
-  justify-self: center;
+  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 100%;
   margin: 0.5em;
 `;
 const ImgCon = styled.div`
   justify-self: center;
-  width: 80%;
+  width: 30%;
   margin: 0.5em;
   position: relative;
 `;
