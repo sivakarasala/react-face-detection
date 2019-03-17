@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const Rank = () => {
+const Rank = ({ name, entries }) => {
   return (
     <Container>
-      <C1>{"Siva, your current rank is..."}</C1>
-      <C2>{"#2"}</C2>
+      <C1>{`${name}, your current rank is...`}</C1>
+      <C2>{`${entries}`}</C2>
     </Container>
   );
 };
