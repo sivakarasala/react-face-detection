@@ -1,35 +1,77 @@
 import React from "react";
 import styled from "styled-components";
 
-const Signin = ({ onRouteChange }) => {
-  return (
-    <Container>
-      <div className="fi1">
-        <fieldset className="fi2">
-          <legend>Sign In</legend>
-          <InnerCon>
-            <label htmlFor="email-address">Email</label>
-            <input type="email" name="email-address" id="email-address" />
-          </InnerCon>
-          <InnerCon>
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" />
-          </InnerCon>
-        </fieldset>
-        <InnerCon2>
-          <input
-            type="submit"
-            value="Sign in"
-            onClick={() => onRouteChange("home")}
-          />
-        </InnerCon2>
-        <InnerCon3>
-          <p onClick={() => onRouteChange("register")}>Register</p>
-        </InnerCon3>
-      </div>
-    </Container>
-  );
-};
+class Signin extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      signInEmail: "",
+      signInPassword: ""
+    };
+  }
+  onEmailChange = event => {
+    this.setState({ signInEmail: event.target.value });
+  };
+  onPasswordChange = event => {
+    this.setState({ signInPassword: event.target.value });
+  };
+  onSubmitSignIn = () => {
+    fetch("http://localhost:4000/signin", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: this.state.signInEmail,
+        password: this.state.signInPassword
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data === "success") {
+          this.props.onRouteChange("home");
+        }
+      });
+  };
+  render() {
+    const { onRouteChange } = this.props;
+    return (
+      <Container>
+        <div className="fi1">
+          <fieldset className="fi2">
+            <legend>Sign In</legend>
+            <InnerCon>
+              <label htmlFor="email-address">Email</label>
+              <input
+                type="email"
+                name="email-address"
+                id="email-address"
+                onChange={this.onEmailChange}
+              />
+            </InnerCon>
+            <InnerCon>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                onChange={this.onPasswordChange}
+              />
+            </InnerCon>
+          </fieldset>
+          <InnerCon2>
+            <input
+              type="submit"
+              value="Sign in"
+              onClick={this.onSubmitSignIn}
+            />
+          </InnerCon2>
+          <InnerCon3>
+            <p onClick={() => onRouteChange("register")}>Register</p>
+          </InnerCon3>
+        </div>
+      </Container>
+    );
+  }
+}
 
 export default Signin;
 
