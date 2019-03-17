@@ -30,7 +30,8 @@ class Signin extends React.Component {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
         }
-      });
+      })
+      .catch(console.log);
   };
   render() {
     const { onRouteChange } = this.props;
