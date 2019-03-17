@@ -1,36 +1,90 @@
 import React from "react";
 import styled from "styled-components";
 
-const Register = ({ onRouteChange }) => {
-  return (
-    <Container>
-      <div className="fi1">
-        <fieldset className="fi2">
-          <legend>Register</legend>
-          <InnerCon>
-            <label htmlFor="name">Name</label>
-            <input type="text" name="name" id="name" />
-          </InnerCon>
-          <InnerCon>
-            <label htmlFor="email-address">Email</label>
-            <input type="email" name="email-address" id="email-address" />
-          </InnerCon>
-          <InnerCon>
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" />
-          </InnerCon>
-        </fieldset>
-        <InnerCon2>
-          <input
-            type="submit"
-            value="Register"
-            onClick={() => onRouteChange("home")}
-          />
-        </InnerCon2>
-      </div>
-    </Container>
-  );
-};
+class Register extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      name: ""
+    };
+  }
+  onNameChange = event => {
+    this.setState({ name: event.target.value });
+  };
+  onEmailChange = event => {
+    this.setState({ email: event.target.value });
+  };
+  onPasswordChange = event => {
+    this.setState({ password: event.target.value });
+  };
+
+  onSubmitSignIn = () => {
+    fetch("http://localhost:4000/register", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password
+      })
+    })
+      .then(res => res.json())
+      .then(user => {
+        if (user) {
+          this.props.loadUser(user);
+          this.props.onRouteChange("home");
+        }
+      });
+  };
+
+  render() {
+    return (
+      <Container>
+        <div className="fi1">
+          <fieldset className="fi2">
+            <legend>Register</legend>
+            <InnerCon>
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                onChange={this.onNameChange}
+              />
+            </InnerCon>
+            <InnerCon>
+              <label htmlFor="email-address">Email</label>
+              <input
+                type="email"
+                name="email-address"
+                id="email-address"
+                onChange={this.onEmailChange}
+              />
+            </InnerCon>
+            <InnerCon>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                onChange={this.onPasswordChange}
+              />
+            </InnerCon>
+          </fieldset>
+          <InnerCon2>
+            <input
+              type="submit"
+              value="Register"
+              onClick={this.onSubmitSignIn}
+            />
+          </InnerCon2>
+        </div>
+      </Container>
+    );
+  }
+}
 
 export default Register;
 
