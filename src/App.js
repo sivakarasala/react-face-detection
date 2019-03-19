@@ -178,9 +178,5 @@ const Container = styled.div`
   }
 `;
 const Container2 = styled.div`
-  /* display: flex; */
   width: 100%;
-
-  /* flex-direction: column;
-  align-items: center; */
 `;
